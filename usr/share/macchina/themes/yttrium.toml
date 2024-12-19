@@ -1,0 +1,35 @@
+# Yttrium
+
+spacing         = 5
+padding         = 2
+hide_ascii      = false
+separator       = ""
+key_color       = "#89b4fa"
+
+
+[palette]
+type 		= "Light"
+visible 	= true
+glyph 		= " ⬤ "
+
+
+[box]
+title 	        = " justyone@ArchLinux "
+border          = "round"
+visible         = true
+
+[box.inner_margin]
+x               = 1
+y               = 1
+
+[custom_ascii]
+color 		= "#89b4fa"
+path   		= "/usr/share/macchina/themes/ascii-tv.txt"
+
+[keys]
+distro          = "Distro"
+terminal        = "Term"
+shell           = "Shell"
+wm              = "WM"
+packages        = "Packages"
+uptime          = "Uptime"

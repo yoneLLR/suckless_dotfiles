@@ -1,0 +1,116 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[palette]
+ red = '#f38ba8'
+ yellow = '#f9e2af'
+ lavender = '#bac2de'
+ sage = '#a5b68d'
+ head = '#6c7086'
+ mink = '#f5c2e7'
+ maroon = '#c79fc9'
+
+[transient_prompt]
+ template = '$ '
+ background = 'transparent'
+ foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+
+[secondary_prompt]
+ background = 'transparent'
+ foreground = 'magenta'
+ template = '$ '
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = 'session'
+    style = 'plain'
+    foreground = 'p:red'
+    template = '['
+  
+  [[blocks.segments]]
+    type = 'session'
+    style = 'plain'
+    foreground = 'p:yellow'
+    template = '{{ .UserName }}'
+
+  [[blocks.segments]]
+    type = 'session'
+    style = 'plain'
+    foreground = 'p:sage'
+    template = '@'
+
+  [[blocks.segments]]
+    type = 'session'
+    style = 'plain'
+    template = '{{ .HostName }} '
+
+  [[blocks.segments]]
+    template = '{{ .Path }}'
+    foreground = 'p:mink'
+    background = 'transparent'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+     cache_duration = 'none'
+     style = 'full'
+
+  [[blocks.segments]]
+    type = 'session'
+    style = 'plain'
+    foreground = 'p:red'
+    template = ']'
+
+  [[blocks.segments]]
+    template = '$'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    template = ' ('
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:maroon'
+    template = '{{ .HEAD }}'
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      commit_icon = '@'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    template = ')'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    foreground = 'p:red'
+    template = '{{ if .Working.Changed }} U{{ end }}{{ if .Staging.Changed }} S{{ end }}'
+
+    [blocks.segments.properties]
+     fetch_status = true
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'yellow'
+    template = '{{ div .Ms 1000}}s'
+
+    [blocks.segments.properties]
+     threshold = 5000
